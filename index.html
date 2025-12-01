@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Адаптивный блокнот для заметок</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo">
+                        <i class="fas fa-book"></i>
+                        <h1>Мой блокнот</h1>
+                    </div>
+                    <p class="subtitle">Создавайте, редактируйте и сохраняйте заметки</p>
+                </div>
+                <div class="header-right">
+                    <div class="theme-switcher">
+                        <button id="themeToggle" class="theme-toggle-btn" aria-label="Переключить тему">
+                            <i class="fas fa-sun"></i>
+                            <span class="theme-text">Светлая</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="app">
+            <div class="notes-controls">
+                <div class="input-section">
+                    <input type="text" id="noteTitle" placeholder="Заголовок заметки...">
+                    <textarea id="noteText" placeholder="Текст заметки..."></textarea>
+                    <div class="button-group">
+                        <button id="addNoteBtn" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> <span class="btn-text">Добавить заметку</span>
+                        </button>
+                        <button id="clearAllBtn" class="btn btn-secondary">
+                            <i class="fas fa-trash-alt"></i> <span class="btn-text">Очистить все</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-sticky-note"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Всего заметок</span>
+                                <span id="totalNotes" class="stat-value">0</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Выполнено</span>
+                                <span id="completedNotes" class="stat-value">0</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Активные</span>
+                                <span id="activeNotes" class="stat-value">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filters-container">
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-list"></i> <span>Все заметки</span>
+                    </button>
+                    <button class="filter-btn" data-filter="active">
+                        <i class="fas fa-clock"></i> <span>Активные</span>
+                    </button>
+                    <button class="filter-btn" data-filter="completed">
+                        <i class="fas fa-check"></i> <span>Завершенные</span>
+                    </button>
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Поиск заметок...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="notes-container">
+                <div id="notesList" class="notes-list">
+                </div>
+                <div id="emptyState" class="empty-state active">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>Нет заметок</h3>
+                    <p>Добавьте первую заметку, используя форму выше</p>
+                    <button id="addFirstNoteBtn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Создать первую заметку
+                    </button>
+                </div>
+                <div id="searchEmptyState" class="empty-state">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Ничего не найдено</h3>
+                    <p>Попробуйте изменить поисковый запрос</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p><i class="fas fa-info-circle"></i> Заметки сохраняются автоматически в вашем браузере</p>
+                <p class="footer-small">Доступно на всех устройствах | Тема: <span id="currentTheme">Светлая</span></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="storage.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
